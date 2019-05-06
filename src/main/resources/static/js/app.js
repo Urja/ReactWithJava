@@ -1,19 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>React + Spring</title>
-</head>
-<body>
-<div id='root'></div>
-<script src="js/jquery.min.js"></script>
-<script src="js/react.js"></script>
-<script src="js/react-dom.js"></script>
-<script src="js/browser.min.js"></script>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<script type="text/babel" src="js/app.js"></script>
-<!--
-<script type="text/babel">
 var Employee = React.createClass({
 
     render : function(){
@@ -28,9 +12,9 @@ var EmployeeTable = React.createClass({
 
         render : function(){
         var rows =[];
-        this.props.employee.forEach(function(employee){
-            rows.push(<Employee employee ={employee}/>);
-        })
+        this.props.employees.forEach(function(employee){
+            rows.push(<Employee employee ={employee} key ={employee.name}/>);
+        });
         return (
         <div className="container">
         <table className="table table-striped">
@@ -60,22 +44,10 @@ var App = React.createClass({
 
       componentDidMount : function(){
         this.loadEmployeesFromServer();
+      },
+      render (){
+        return  (<EmployeeTable employees = {this.state.employees}/>);
       }
-      render (<EmployeeTable employees = {this.state.employees}/>);
 });
-var EMPLOYEES = [
-  {name: 'Urja Ramanandi', age: 33, years: 9},
-  {name: 'Anil Bharadia', age: 31, years: 8},
-  {name: 'Hiral Rajput', age: 28, years: 2},
-  {name: 'James Henry', age: 33, years: 2}
-];
-
-&lt;!&ndash;
-ReactDOM.render(
-    <EmployeeTable employee={EMPLOYEES}/>,document.getElementById('root')
-);&ndash;&gt;
 
 ReactDOM.render(<App />, document.getElementById('root') );
-</script>-->
-</body>
-</html>
