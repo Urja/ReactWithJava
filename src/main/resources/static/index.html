@@ -10,72 +10,11 @@
 <script src="js/react.js"></script>
 <script src="js/react-dom.js"></script>
 <script src="js/browser.min.js"></script>
+<script src="js/toastr.min.js"></script>
+
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/toastr.min.css">
+
 <script type="text/babel" src="js/app.js"></script>
-<!--
-<script type="text/babel">
-var Employee = React.createClass({
-
-    render : function(){
-        return ( <tr>
-        <td>{this.props.employee.name}</td>
-        <td>{this.props.employee.age}</td>
-        <td>{this.props.employee.years}</td>
-      </tr>);
-}
-});
-var EmployeeTable = React.createClass({
-
-        render : function(){
-        var rows =[];
-        this.props.employee.forEach(function(employee){
-            rows.push(<Employee employee ={employee}/>);
-        })
-        return (
-        <div className="container">
-        <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>Name</th><th>Age</th><th>Years</th>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </table>
-      </div>);
-      }
-});
-var App = React.createClass({
-  loadEmployeesFromServer : function(){
-        var self = this;
-        $.ajax({
-            url : "http://localhost:8080/api/employees"
-        }).then(function (data){
-            self.setState({employees: data._embedded.employees});
-        });
-       },
-
-      getInitialState : function (){
-        return {employees : []};
-      },
-
-      componentDidMount : function(){
-        this.loadEmployeesFromServer();
-      }
-      render (<EmployeeTable employees = {this.state.employees}/>);
-});
-var EMPLOYEES = [
-  {name: 'Urja Ramanandi', age: 33, years: 9},
-  {name: 'Anil Bharadia', age: 31, years: 8},
-  {name: 'Hiral Rajput', age: 28, years: 2},
-  {name: 'James Henry', age: 33, years: 2}
-];
-
-&lt;!&ndash;
-ReactDOM.render(
-    <EmployeeTable employee={EMPLOYEES}/>,document.getElementById('root')
-);&ndash;&gt;
-
-ReactDOM.render(<App />, document.getElementById('root') );
-</script>-->
 </body>
 </html>

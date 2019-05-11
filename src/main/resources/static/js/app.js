@@ -1,12 +1,32 @@
 var Employee = React.createClass({
+    getInitialState: function(){
+        return {display:true};
+    },
+    handleDelete(){
+        var self = this;
+        $.ajax({
+            url: self.props.employee._links.self.href,
+            type: 'DELETE',
+            success: function(result){
+                self.setState({display: false});
+            },
+           error: function(xhr, ajaxOptions, thrownError){
+                toastr.error(xhr.ressposeJSON.mesaage);
+           }
+        });
+    },
 
-    render : function(){
-        return ( <tr>
-        <td>{this.props.employee.name}</td>
-        <td>{this.props.employee.age}</td>
-        <td>{this.props.employee.years}</td>
-      </tr>);
-}
+        render : function(){
+        if (this.state.display==false) return null;
+            else
+            return ( <tr>
+            <td>{this.props.employee.name}</td>
+            <td>{this.props.employee.age}</td>
+            <td>{this.props.employee.years}</td>
+            <td><button className="btn btn-danger" onClick={this.handleDelete}>Delete</button></td>
+          </tr>);
+        }
+
 });
 var EmployeeTable = React.createClass({
 
